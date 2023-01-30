@@ -152,8 +152,8 @@ export default class LinkedList {
     if (ptr.next === null) this.pop();
     else {
       ptr.next = ptr.next.next;
+      this.length--;
     }
-    this.length--;
   }
 
 }
