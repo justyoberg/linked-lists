@@ -1,3 +1,4 @@
+import { Console } from "console";
 import Node from "./Node.js"
 
 export default class LinkedList {
@@ -8,9 +9,12 @@ export default class LinkedList {
   }
 
   append(value) {
+    // Add new node to end of the list
     const newNode = new Node(value);
     this.length++;
+
     if (this.head === null) {return this.head = newNode};
+
     let ptr = this.head;
     while(ptr.next !== null) {
       ptr = ptr.next;
@@ -19,9 +23,12 @@ export default class LinkedList {
   }
 
   prepend(value) {
+    // Add new node to start of the list
     const newNode = new Node(value);
     this.length++;
+
     if (this.head === null) {return this.head = newNode};
+
     newNode.next = this.head;
     this.head = newNode;
   }
@@ -35,17 +42,19 @@ export default class LinkedList {
   }
 
   tail() {
-    let next = this.head;
+    // Return the tail of the list
+    let ptr = this.head;
 
-    while(next.next !== null) {
-      next = next.next;
+    while(ptr.next !== null) {
+      ptr = ptr.next;
     };
 
     return next;
   }
 
   at(index) {
-    if (index > this.length - 1) return `List only contains ${this.length} items.`;
+    // Return a node at the given index
+    if (index > this.length - 1) return console.log(`List only contains ${this.length} items.`);
     
     let ptr = this.head;
     for(let i = 0; i < index; i++) {
@@ -56,6 +65,7 @@ export default class LinkedList {
   }
 
   pop() {
+    // Remove the last node of the list, and return it
     let newTail = this.at(this.length - 2);
     let oldTail = newTail.next;
     newTail.next = null;
@@ -64,6 +74,7 @@ export default class LinkedList {
   }
 
   contains(value) {
+    // Returns true if the given value is contained in the list, else false
     let ptr = this.head;
 
     while(ptr.next !== null) {
@@ -74,6 +85,7 @@ export default class LinkedList {
   }
 
   find(value) {
+    // Returns the index of the given value in the list
     let ptr = this.head;
     let index = 0;
 
@@ -87,6 +99,7 @@ export default class LinkedList {
   }
 
   toString() {
+    // Returns a string representation of the list
     let ptr = this.head;
     let string = "";
 
@@ -100,6 +113,7 @@ export default class LinkedList {
   }
 
   insertAt(value, index) {
+    // Inserts the value at the given index
     if (index < 0) return "Index cannot be negative";
     if (index > this.length - 1) {
       return this.append(value);
@@ -123,6 +137,7 @@ export default class LinkedList {
   }
 
   removeAt(index) {
+    // Removes the given index from the list
     if (index < 0) return console.log("Index cannot be negative");
     if (index > this.length - 1) return console.log("Index higher than length of list");
     if (index === 0) {
@@ -143,34 +158,3 @@ export default class LinkedList {
   }
 
 }
-
-let list = new LinkedList();
-
-list.append(10);
-list.append(20);
-list.prepend(30);
-console.log(list);
-console.log(list.tail().value);
-list.append(40);
-list.prepend(50);
-list.append(60);
-console.log(list);
-console.log(list.size());
-console.log(list.pop())
-console.log(list.size());
-console.log(list.at(5));
-console.log(list);
-console.log(list.contains(20));
-console.log(list.contains(60));
-console.log(list.find(20));
-console.log(list.find(40));
-console.log(list.find(50));
-console.log(list.find(30));
-console.log(list.find(5435));
-console.log(list.toString());
-list.insertAt("XX", 3);
-console.log(list.toString());
-list.insertAt("YY", 43535);
-console.log(list.toString());
-list.removeAt(4);
-console.log(list.toString());
