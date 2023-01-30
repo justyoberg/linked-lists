@@ -34,3 +34,6 @@ console.log(list.length);
 list.removeAt(3);
 console.log(list.toString());
 console.log(list.length);
+list.removeAt(list.length - 1);
+console.log(list.toString());
+console.log(list.length);
