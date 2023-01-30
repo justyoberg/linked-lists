@@ -1,4 +1,3 @@
-import { Console } from "console";
 import Node from "./Node.js"
 
 export default class LinkedList {
@@ -49,7 +48,7 @@ export default class LinkedList {
       ptr = ptr.next;
     };
 
-    return next;
+    return ptr;
   }
 
   at(index) {

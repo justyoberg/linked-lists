@@ -28,5 +28,5 @@ list.insertAt("XX", 3);
 console.log(list.toString());
 list.insertAt("YY", 43535);
 console.log(list.toString());
-list.removeAt(4);
+list.removeAt(3);
 console.log(list.toString());
